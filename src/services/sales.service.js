@@ -105,7 +105,7 @@ const getDiscountDistribution = async () => {
 // 📊 4. Average Rating per Category
 const getAvgRating = async () => {
   const result = await pool.query(`
-    SELECT category, ROUND(AVG(rating), 2) as avg_rating
+    SELECT category, ROUND(AVG(rating)::numeric, 2) as avg_rating
     FROM sales
     GROUP BY category
     ORDER BY avg_rating DESC
